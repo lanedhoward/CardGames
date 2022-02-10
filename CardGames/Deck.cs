@@ -22,9 +22,9 @@ namespace CardGames
             Size = size;
             
 
-            for (int i = 1; i <= Size / suits.Count(); i++) //start i at 1 because card values aren't 0 indexed
+            for (int i = 1; i <= Size / suits.Length; i++) //start i at 1 because card values aren't 0 indexed
             {
-                for (int j = 0; j < suits.Count(); j++)
+                for (int j = 0; j < suits.Length; j++)
                 {
                     Card card = new Card()
                     {
@@ -89,7 +89,7 @@ namespace CardGames
             // Knuth-Fisher-Yates shuffle algorithm code adapted from
             // https://blog.codinghorror.com/the-danger-of-naivete/
             Random random = new Random();
-            for (int i = Inventory.Count() - 1; i > 0; i--)
+            for (int i = Inventory.Count - 1; i > 0; i--)
             {
                 int n = random.Next(i + 1);
 

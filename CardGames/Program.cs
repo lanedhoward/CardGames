@@ -13,12 +13,14 @@ namespace CardGames
         {
             Deck deck = new Deck(26, new string[] { "Apples", "Oranges" });
 
-            Card myCard = deck.Draw();
-            deck.RemoveCard(myCard);
-            Print("Drew " + myCard.ReadFullName());
-
             deck.Shuffle();
 
+            Card myCard = deck.Draw();
+            deck.RemoveCard(myCard);
+
+            Print("Drew " + myCard.ReadFullName());
+
+            
             foreach (Card card in deck.Inventory)
             {
                 Print(card.ReadFullName());
