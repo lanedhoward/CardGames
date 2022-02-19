@@ -19,7 +19,7 @@ namespace CardGames
             Name = "Apples or Oranges";
             Players = 1;
             CardsInDeck = 26;
-            deck = new Deck(CardsInDeck, new string[] { "Apples", "Oranges" });
+            
         }
 
         public override void Run()
@@ -28,6 +28,7 @@ namespace CardGames
             Console.BackgroundColor = ConsoleColor.Black;
 
             ShowInstructions();
+            SetUpGame();
 
             Print("\tThe dealer shuffles the deck.");
             deck.Shuffle();
@@ -87,6 +88,11 @@ namespace CardGames
             Print("Every correct guess wins a point. Play until you run out of cards in the deck.");
             WaitForKeyPress(true);
             Console.Clear();
+        }
+
+        public void SetUpGame()
+        {
+            deck = new Deck(CardsInDeck, new string[] { "Apples", "Oranges" });
         }
     }
 }

@@ -19,10 +19,7 @@ namespace CardGames
             Name = "Highest Match";
             Players = 1;
             CardsInDeck = 52;
-            deck = new Deck(CardsInDeck, suits);
-
-            player = new Player() { Name = "Player", myHand = new Hand() };
-            dealer = new Player() { Name = "Dealer", myHand = new Hand() };
+            
 
         }
 
@@ -30,8 +27,10 @@ namespace CardGames
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.BackgroundColor = ConsoleColor.Black;
-
+            
             ShowInstructions();
+
+            SetUpGame();
 
             Print("\tThe dealer shuffles the deck.");
             deck.Shuffle();
@@ -62,9 +61,9 @@ namespace CardGames
                 Print("Would you like to end the game and compare hands now?");
                 if (GetInputBool())
                 {
-                    Print("TODO: end game");
+                    
                     // end game
-                    Console.Clear();
+                    
                     break;
                 }
 
@@ -83,16 +82,19 @@ namespace CardGames
 
                 // handle AI
                 TakeAITurn();
-                Print("Here is dealer's hand: ");
-                Print(dealer.myHand.ShowCards());
+
+                //Print("Here is dealer's hand: ");
+                //Print(dealer.myHand.ShowCards());
 
 
                 WaitForKeyPress(true);
-                
+
+                ClearScrollable();
+
 
             }
 
-            Console.Clear();
+            ClearScrollable();
             //done with loop, compare cards
             Print("Player hand: ");
             Print(player.myHand.ShowCards());
@@ -124,7 +126,7 @@ namespace CardGames
             }
             WaitForKeyPress(true);
             Console.Clear();
-
+            
 
 
         }
@@ -230,6 +232,14 @@ Values are as follows:
             
             dealer.myHand.Inventory[indexOfLowestValue] = v; // overwrite / replace card instead of remove, so it maintains the same slot in hand
 
+        }
+
+        private void SetUpGame()
+        {
+            deck = new Deck(CardsInDeck, suits);
+
+            player = new Player() { Name = "Player", myHand = new Hand() };
+            dealer = new Player() { Name = "Dealer", myHand = new Hand() };
         }
     }
 }

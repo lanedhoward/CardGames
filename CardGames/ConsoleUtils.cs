@@ -116,6 +116,21 @@ namespace CardGames
             return File.ReadAllText(path);
         }
 
+        public static void ClearScrollable()
+        {
+            int height = Console.WindowHeight;
+            int currentLineCursor = Console.CursorTop;
+            Console.SetCursorPosition(0, Console.CursorTop);
+            
+            
+            for (int i = 0; i < WindowHeight; i++)
+            {
+                Print();
+            }
+
+            Console.SetCursorPosition(0, currentLineCursor+1);
+            
+        }
 
     }
 }

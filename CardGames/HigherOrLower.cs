@@ -19,15 +19,17 @@ namespace CardGames
             Name = "Higher or Lower";
             Players = 1;
             CardsInDeck = 52;
-            deck = new Deck(CardsInDeck, new string[] { "Hearts", "Diamonds", "Clubs", "Spades" });
+            
         }
 
         public override void Run()
         {
+            
             Console.ForegroundColor = ConsoleColor.Red;
             Console.BackgroundColor = ConsoleColor.Black;
 
             ShowInstructions();
+            SetUpGame();
 
             Print("\tThe dealer shuffles the deck.");
             deck.Shuffle();
@@ -90,6 +92,10 @@ namespace CardGames
             Print("Every correct guess wins a point. Play 26 rounds.");
             WaitForKeyPress(true);
             Console.Clear();
+        }
+        public void SetUpGame()
+        {
+            deck = new Deck(CardsInDeck, new string[] { "Hearts", "Diamonds", "Clubs", "Spades" });
         }
     }
 }
