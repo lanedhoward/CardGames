@@ -11,22 +11,8 @@ namespace CardGames
     {
         static void Main(string[] args)
         {
-            Deck deck = new Deck(26, new string[] { "Apples", "Oranges" });
-
-            deck.Shuffle();
-
-            Card myCard = deck.Draw();
-            deck.RemoveCard(myCard);
-
-            Print("Drew " + myCard.ReadFullName());
-
-            
-            foreach (Card card in deck.Inventory)
-            {
-                Print(card.ReadFullName());
-            }
-
-            WaitForKeyPress(true);
+            Application myApplication = new Application();
+            myApplication.Menu();
 
         }
     }

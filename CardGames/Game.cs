@@ -20,5 +20,10 @@ namespace CardGames
         {
             throw new System.NotImplementedException();
         }
+
+        public void ShowInstructions()
+        {
+
+        }
     }
 }
