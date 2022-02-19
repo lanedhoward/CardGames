@@ -21,7 +21,7 @@ namespace CardGames
 
             
             allGames.Add(new ApplesOrOranges());
-            allGames.Add(new Game() { Name = "test2" });
+            allGames.Add(new HigherOrLower());
             allGames.Add(new Game() { Name = "test3" });
         }
         public void Menu()

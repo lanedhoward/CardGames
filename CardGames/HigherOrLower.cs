@@ -7,24 +7,24 @@ using static CardGames.ConsoleUtils;
 
 namespace CardGames
 {
-    class ApplesOrOranges : Game
+    class HigherOrLower : Game
     {
         private int score = 0;
         private Deck deck;
-        private string currentSuit = "";
+        private int currentValue = 0;
         private string currentFullName = "";
-        private bool guessedWouldStaySame = false;
-        public ApplesOrOranges()
+        private bool guessedWouldBeHigher = false;
+        public HigherOrLower()
         {
-            Name = "Apples or Oranges";
+            Name = "Higher or Lower";
             Players = 1;
-            CardsInDeck = 26;
-            deck = new Deck(CardsInDeck, new string[] { "Apples", "Oranges" });
+            CardsInDeck = 52;
+            deck = new Deck(CardsInDeck, new string[] { "Hearts", "Diamonds", "Clubs", "Spades" });
         }
 
         public override void Run()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.BackgroundColor = ConsoleColor.Black;
 
             ShowInstructions();
@@ -37,27 +37,27 @@ namespace CardGames
             Print("Dealer: Let us begin.");
             Print("Dealer: I drew ");
             Card c = deck.Draw();
-            currentSuit = c.Suit;
+            currentValue = c.NumberValue;
             currentFullName = c.ReadFullName();
             Print("\t" + currentFullName);
 
-            for (int i = 0; i < CardsInDeck-1-1; i++) // -1 for zero-indexing, -1 for card already drawn
+            for (int i = 0; i < 26-1-1; i++) // 26 bc thats how long ApplesOrOranges is and that is a good length, -1 for zero-indexing, -1 for card already drawn
             {
 
                 Print("Dealer: The last card was the " + currentFullName);
-                Print("Dealer: Do you think the next card will be the same suit?");
-                guessedWouldStaySame = GetInputBool();
+                Print("Dealer: Do you think the next card will have a higher value?");
+                guessedWouldBeHigher = GetInputBool();
                 Print("Dealer: I drew ");
                 c = deck.Draw();
                 
-                bool sameSuit;
-                if (c.Suit == currentSuit) sameSuit = true; else sameSuit = false;
+                bool higher;
+                if (c.NumberValue > currentValue) higher = true; else higher = false;
 
-                currentSuit = c.Suit;
+                currentValue = c.NumberValue;
                 currentFullName = c.ReadFullName();
                 Print("\t" + currentFullName);
 
-                if (guessedWouldStaySame == sameSuit)
+                if (guessedWouldBeHigher == higher)
                 {
                     Print("Dealer: You were correct. +1 point.");
                     score++;
@@ -83,8 +83,11 @@ namespace CardGames
 
         public override void ShowInstructions()
         {
-            Print("A card will be drawn from a two-suit deck. You will guess whether the next card drawn will be the same suit or not.");
-            Print("Every correct guess wins a point. Play until you run out of cards in the deck.");
+            Print("A card will be drawn from a standard, 52 card, 4-suit deck. ");
+            Print("You will guess whether the next card drawn will be of a higher value or not.");
+            Print("Values are as follows: ");
+            Print("Ace < 2 < 3 < 4 < 5 < 6 < 7 < 8 < 9 < 10 < Jack < Queen < King");
+            Print("Every correct guess wins a point. Play 26 rounds.");
             WaitForKeyPress(true);
             Console.Clear();
         }
