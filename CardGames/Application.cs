@@ -22,7 +22,7 @@ namespace CardGames
             
             allGames.Add(new ApplesOrOranges());
             allGames.Add(new HigherOrLower());
-            allGames.Add(new Game() { Name = "test3" });
+            allGames.Add(new HighestMatch());
         }
         public void Menu()
         {

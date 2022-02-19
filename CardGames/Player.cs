@@ -7,7 +7,8 @@ namespace CardGames
 {
     public class Player
     {
-        private string Name;
-        private Deck Inventory;
+        public string Name;
+        public Deck myCards;
+        public Hand myHand;
     }
 }

@@ -86,7 +86,7 @@ namespace CardGames
             Print("A card will be drawn from a standard, 52 card, 4-suit deck. ");
             Print("You will guess whether the next card drawn will be of a higher value or not.");
             Print("Values are as follows: ");
-            Print("Ace < 2 < 3 < 4 < 5 < 6 < 7 < 8 < 9 < 10 < Jack < Queen < King");
+            Print("\tAce < 2 < 3 < 4 < 5 < 6 < 7 < 8 < 9 < 10 < Jack < Queen < King");
             Print("Every correct guess wins a point. Play 26 rounds.");
             WaitForKeyPress(true);
             Console.Clear();
