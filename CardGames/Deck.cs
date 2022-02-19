@@ -9,6 +9,7 @@ namespace CardGames
     public class Deck
     {
         public List<Card> Inventory = new List<Card>();
+        private Random random = new Random();
         public int Size;
         // had Suits[] stored here originally but i think that should be stored in game class
         // a deck doesn't need to know what suits are in it besides when it is constructing the deck
@@ -71,6 +72,7 @@ namespace CardGames
         public Card Draw(int index)
         {
             // draw card at index
+            RemoveCard(Inventory[index]);
             return Inventory[index];
         }
         
@@ -88,7 +90,7 @@ namespace CardGames
         {
             // Knuth-Fisher-Yates shuffle algorithm code adapted from
             // https://blog.codinghorror.com/the-danger-of-naivete/
-            Random random = new Random();
+            
             for (int i = Inventory.Count - 1; i > 0; i--)
             {
                 int n = random.Next(i + 1);
@@ -103,7 +105,15 @@ namespace CardGames
 
         public void Cut()
         {
-            throw new System.NotImplementedException();
+            // choose random index of list. move everything from before that index to after.
+            int n = random.Next(Inventory.Count);
+
+            for (int i = 0; i < n; i++)
+            {
+                // draw and remove card then add it back to the end
+                Card c = Draw();
+                Inventory.Add(c);
+            }
         }
 
         public void Play(Deck location)

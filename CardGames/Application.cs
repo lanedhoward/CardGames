@@ -19,15 +19,16 @@ namespace CardGames
         {
             //gonna add all the games here
 
-            //test code
-            allGames.Add(new Game() { Name = "test" });
+            
+            allGames.Add(new ApplesOrOranges());
             allGames.Add(new Game() { Name = "test2" });
             allGames.Add(new Game() { Name = "test3" });
         }
         public void Menu()
         {
-            
-            Print(@"Welcome to Lane's Card Game Palace.
+            Console.ResetColor();
+            Console.Title = "Lucky Lane's Card Game Palace";
+            Print(@"******* Welcome to Lucky Lane's Card Game Palace. *******
 Select the game you'd like to play, or select 0 to see the credits.");
             Print();
             Print("\t0. Credits");
@@ -53,6 +54,8 @@ Select the game you'd like to play, or select 0 to see the credits.");
             Print("Launching " + game.Name);
             Console.Clear();
             game.Run();
+            //once the game is done running, go back to menu
+            Menu();
         }
 
         public void ShowCredits()

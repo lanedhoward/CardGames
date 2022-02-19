@@ -8,10 +8,10 @@ namespace CardGames
     public class Game
     {
         public string Name;
-        private int Players;
-        private int CardsInDeck;
+        protected int Players;
+        protected int CardsInDeck;
 
-        public void Run()
+        public virtual void Run()
         {
             throw new System.NotImplementedException();
         }
@@ -21,7 +21,7 @@ namespace CardGames
             throw new System.NotImplementedException();
         }
 
-        public void ShowInstructions()
+        public virtual void ShowInstructions()
         {
 
         }
