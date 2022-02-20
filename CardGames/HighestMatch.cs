@@ -214,12 +214,23 @@ Values are as follows:
                 else
                 {
                     //any other suit
-                    if (c.NumberValue < lowestValue)
+                    if (!foundNonHighestSuitCard) 
                     {
+                        //first card of non highest suit, just accept it as lowest
                         indexOfLowestValue = index;
                         lowestValue = c.NumberValue;
+
+                        foundNonHighestSuitCard = true;
                     }
-                    foundNonHighestSuitCard = true;
+                    else
+                    {
+                        // if we already had a card that wasnt the highest suit, compare em
+                        if (c.NumberValue < lowestValue)
+                        {
+                            indexOfLowestValue = index;
+                            lowestValue = c.NumberValue;
+                        }
+                    }
                 }
                 index++;
             }
