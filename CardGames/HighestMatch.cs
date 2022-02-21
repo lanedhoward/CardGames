@@ -69,7 +69,7 @@ namespace CardGames
 
                 // if draw new card, get input, discard card, draw new
                 Print("Which card would you like to discard? ");
-                int input = GetInputInt(1,4);
+                int input = GetInputIntKey(1,4);
                 Card discard = player.myHand.Inventory[input-1];
                 //player.myHand.RemoveCard(discard);
                 Print("You discard the " + discard.ReadFullName());

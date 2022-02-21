@@ -65,14 +65,16 @@ namespace CardGames
             PrintSameLine("[Y/N]: ");
 
             
-            string input = ReadKey(false).Key.ToString();
+            string input = ReadKey(false).KeyChar.ToString();
             Print();
 
-            if (input == "Y" || input == "y")
+            //sneakily allows for 1 or 2 to be used as yes or no, so you can play without moving your hand
+
+            if (input == "Y" || input == "y" || input == "1")
             {
                 return true;
             }
-            else if (input == "N" || input == "n")
+            else if (input == "N" || input == "n" || input == "2")
             {
                 return false;
             }
@@ -109,9 +111,39 @@ namespace CardGames
             }
             
         }
-        
 
-        public static string LoadTextFromFile(string path)
+        public static int GetInputIntKey(int min, int max)
+        {
+            //gets int input without pressing enter. will need to be between 0-9
+            PrintSameLine("[" + min.ToString() + " - " + max.ToString() + "]: ");
+
+
+            string input = ReadKey(false).KeyChar.ToString();
+            Print();
+            int inputInt;
+            try
+            {
+                inputInt = int.Parse(input);
+                if (inputInt >= min && inputInt <= max)
+                {
+                    return inputInt;
+                }
+                else
+                {
+                    Print("[Error, you must input an integer between the Minimum and Maximum values]");
+                    return GetInputIntKey(min, max);
+                }
+            }
+            catch (Exception)
+            {
+                Print("[Error, you must input an integer between the Minimum and Maximum values]");
+                return GetInputIntKey(min, max);
+            }
+
+        }
+
+
+            public static string LoadTextFromFile(string path)
         {
             return File.ReadAllText(path);
         }

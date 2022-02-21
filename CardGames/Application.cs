@@ -39,7 +39,7 @@ Select the game you'd like to play, or select 0 to see the credits.");
                 i++;
             }
 
-            int input = GetInputInt(0, allGames.Count);
+            int input = GetInputIntKey(0, allGames.Count);
             if (input == 0)
             {
                 ShowCredits();
