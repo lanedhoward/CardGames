@@ -43,9 +43,11 @@ namespace CardGames
             currentFullName = c.ReadFullName();
             Print("\t" + currentFullName);
 
-            for (int i = 0; i < 26-1-1; i++) // 26 bc thats how long ApplesOrOranges is and that is a good length, -1 for zero-indexing, -1 for card already drawn
-            {
+            int round = 1;
 
+            for (int i = 0; i < 26-1; i++) // 26 bc thats how long ApplesOrOranges is and that is a good length
+            {
+                if (round != 1) Print($"\tRound {round}");
                 Print("Dealer: The last card was the " + currentFullName);
                 Print("Dealer: Do you think the next card will have a higher value?");
                 guessedWouldBeHigher = GetInputBool();
@@ -73,7 +75,7 @@ namespace CardGames
                 Console.Clear();
 
                 //every loop has to get input, draw next card, see if guess was right.
-
+                round++;
             }
 
             Print("Dealer: Your final score is " + score);

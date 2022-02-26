@@ -18,13 +18,13 @@ namespace CardGames
         }
         public static void WaitForKeyPress(bool ClearLineAfter)
         {
-            Print("[Press any key to continue...]");
+            PrintSameLine("[Press any key to continue...] ");
             ReadKey();
             // I like to clear the line after and then leave the space so my console isnt just filled with
             // waiting for key press messages.
             if (ClearLineAfter) 
             {
-                GoBackOneLine();
+                //GoBackOneLine();
                 ClearCurrentConsoleLine();
                 Print();
             }

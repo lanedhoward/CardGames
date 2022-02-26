@@ -48,8 +48,11 @@ namespace CardGames
 
             Print("Dealer: Let us begin.");
 
+            int round = 1;
+
             for (int i = 0; i < 10; i++)
             {
+                if (round != 1) Print($"\tRound {round}");
                 //each turn:
                 // show player hand
 
@@ -91,7 +94,7 @@ namespace CardGames
 
                 ClearScrollable();
 
-
+                round++;
             }
 
             ClearScrollable();
@@ -101,7 +104,7 @@ namespace CardGames
             var playerAppraisal = AppraiseHand(player);
             Print("You had a highest match of " + playerAppraisal.Item2 + " from the cards " + playerAppraisal.Item1);
             WaitForKeyPress(true);
-            Print();
+            //Print();
 
             Print("Dealer hand: ");
             Print(dealer.myHand.ShowCards());

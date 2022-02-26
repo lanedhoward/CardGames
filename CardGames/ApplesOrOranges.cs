@@ -42,8 +42,11 @@ namespace CardGames
             currentFullName = c.ReadFullName();
             Print("\t" + currentFullName);
 
-            for (int i = 0; i < CardsInDeck-1-1; i++) // -1 for zero-indexing, -1 for card already drawn
+            int round = 1;
+
+            for (int i = 0; i < CardsInDeck-1-1; i++) //-1 for zero indexing, -1 because u have to draw the last card but cant draw another after it
             {
+                if (round != 1) Print($"\tRound {round}");
 
                 Print("Dealer: The last card was the " + currentFullName);
                 Print("Dealer: Do you think the next card will be the same suit?");
@@ -72,7 +75,7 @@ namespace CardGames
                 Console.Clear();
 
                 //every loop has to get input, draw next card, see if guess was right.
-
+                round++;
             }
 
             Print("Dealer: Your final score is " + score);
