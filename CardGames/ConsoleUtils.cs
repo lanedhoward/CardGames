@@ -13,8 +13,9 @@ namespace CardGames
 
         public static void WaitForKeyPress()
         {
-            Print("[Press any key to continue...]");
+            PrintSameLine("[Press any key to continue...]");
             ReadKey();
+            Print();
         }
         public static void WaitForKeyPress(bool ClearLineAfter)
         {
@@ -26,8 +27,9 @@ namespace CardGames
             {
                 //GoBackOneLine();
                 ClearCurrentConsoleLine();
-                Print();
+                
             }
+            Print();
         }
 
         // i had methods like these in one of my projects last semester so i looked up how to do this again
@@ -143,7 +145,7 @@ namespace CardGames
         }
 
 
-            public static string LoadTextFromFile(string path)
+        public static string LoadTextFromFile(string path)
         {
             return File.ReadAllText(path);
         }

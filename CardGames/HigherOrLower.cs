@@ -98,6 +98,7 @@ namespace CardGames
         public void SetUpGame()
         {
             deck = new Deck(CardsInDeck, new string[] { "Hearts", "Diamonds", "Clubs", "Spades" });
+            score = 0;
         }
     }
 }

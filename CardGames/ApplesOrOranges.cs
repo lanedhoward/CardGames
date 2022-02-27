@@ -96,6 +96,7 @@ namespace CardGames
         public void SetUpGame()
         {
             deck = new Deck(CardsInDeck, new string[] { "Apples", "Oranges" });
+            score = 0;
         }
     }
 }
